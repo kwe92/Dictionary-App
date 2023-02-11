@@ -7,10 +7,12 @@ const AppBarContainer = styled(Row)`
   align-items: center;
   justify-content: space-between;
   background: lightblue;
+  margin-top: 3.625rem;
 `;
 
 const RightContentContainer = styled(Row)`
   align-items: center;
+  gap: 1rem;
 `;
 
 const Logo = styled.img``;
@@ -22,6 +24,8 @@ const DropDownIcon = styled.img``;
 const FontDropDownContainer = styled(Row)`
   align-items: center;
   background: lightgreen;
+  gap: 1.25rem;
+  padding-right: 0.5rem;
 `;
 
 const VerticalLine = styled.div`
