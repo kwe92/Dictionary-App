@@ -14,6 +14,10 @@ const AppBarContainer = styled(Row)`
 const RightContentContainer = styled(Row)`
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: 450px) {
+    gap: 0;
+  }
 `;
 
 const Logo = styled.img``;
@@ -34,16 +38,21 @@ const DropDownContent = styled(Column)<Props>`
   position: absolute;
   background: #f8b703;
   margin-top: 12.825rem;
-  margin-right: 5.25rem;
+  // margin-right: 1.25rem;
   border-radius: 0.825rem;
   box-shadow: 1px 2px 6px grey;
   z-index: 1;
+
+  @media screen and (max-width: 450px) {
+    width: 8.4375rem;
+  }
 `;
 
 const FontDropDownContainer = styled(Row)`
   height: 4rem;
+  width: 7.5rem;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   position: relative;
   background: lightgreen;
   gap: 1.25rem;
