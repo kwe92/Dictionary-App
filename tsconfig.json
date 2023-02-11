@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
+    // "lib": ["es6", "dom"],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "target": "es5",
     "lib": [
       "dom",
@@ -24,3 +29,31 @@
     "src"
   ]
 }
+
+
+
+// {
+//   "compilerOptions": {
+//     "lib": ["es6", "dom"],
+//     "noImplicitAny": true,
+//     "noImplicitThis": true,
+//     "strictNullChecks": true
+//   }
+// }
+
+// {
+//   "compilerOptions": {
+//       "outDir": "./dist",
+//       "target": "es5",
+//       "lib": ["es6", "dom"],
+//       "module": "ES6",
+//       "jsx": "react",
+//       "moduleResolution": "node",
+//       "noImplicitAny": true,
+//       "allowSyntheticDefaultImports": true,
+//       "allowJs": true
+//   },
+//   "exclude": [
+//       "dist"
+//   ]
+// }
