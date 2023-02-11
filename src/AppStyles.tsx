@@ -13,6 +13,10 @@ const AppContainer = styled(Column)`
   width: 60%;
   height: 100%;
   background: #7d3865;
+
+  @media screen and (max-width: 1300px) {
+    width: 88.5%;
+  }
 `;
 
 export { AppContainer, AppContainerWrapper };
