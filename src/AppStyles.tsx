@@ -4,7 +4,7 @@ import { Column } from "./styles/layout/Flex";
 const AppContainerWrapper = styled(Column)`
   width: 100%;
   height: 100vh;
-  background: #0fa2a9;
+  background: green;
   align-items: center;
   justify-content: center;
 `;
