@@ -1,5 +1,6 @@
+import { display } from "@mui/system";
 import styled from "styled-components";
-import { Row } from "../../styles/layout/Flex";
+import { Column, Row } from "../../styles/layout/Flex";
 
 const AppBarContainer = styled(Row)`
   width: 100%;
@@ -21,8 +22,29 @@ const IconMoon = styled.img``;
 
 const DropDownIcon = styled.img``;
 
+interface Props {
+  display: string;
+}
+
+const DropDownContent = styled(Column)<Props>`
+  display: ${(props) => props.display};
+  justify-content: space-evenly;
+  width: 11.4375rem;
+  height: 9.5rem;
+  position: absolute;
+  background: #f8b703;
+  margin-top: 12.825rem;
+  margin-right: 5.25rem;
+  border-radius: 0.825rem;
+  box-shadow: 1px 2px 6px grey;
+  z-index: 1;
+`;
+
 const FontDropDownContainer = styled(Row)`
+  height: 4rem;
   align-items: center;
+  justify-content: center;
+  position: relative;
   background: lightgreen;
   gap: 1.25rem;
   padding-right: 0.5rem;
@@ -34,6 +56,12 @@ const VerticalLine = styled.div`
   background: red;
 `;
 
+const DropDownItem = styled.p`
+  width: 100%;
+  padding: 0.675rem 0rem;
+  background: #c1a7b0;
+`;
+
 export {
   AppBarContainer,
   Logo,
@@ -42,4 +70,6 @@ export {
   DropDownIcon,
   RightContentContainer,
   VerticalLine,
+  DropDownContent,
+  DropDownItem,
 };
