@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import AppTheme from "./styles/theme/AppTheme";
 import { AppContainer, AppContainerWrapper } from "./AppStyles";
 import AppBar from "./components/appBar/AppBar";
+import SearchBar from "./components/searchBar/SearchBar";
 const theme = AppTheme;
 
 const App = (props: {}) => {
@@ -11,6 +12,7 @@ const App = (props: {}) => {
       <AppContainerWrapper>
         <AppContainer>
           <AppBar />
+          <SearchBar />
           <h1>App</h1>;
         </AppContainer>
       </AppContainerWrapper>
