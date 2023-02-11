@@ -9,6 +9,7 @@ import {
   RightContentContainer,
   VerticalLine,
 } from "./AppBarStyles";
+import Switch from "./switch/Switch";
 
 const AppBar = (props: {}) => {
   return (
@@ -22,6 +23,8 @@ const AppBar = (props: {}) => {
         </FontDropDownContainer>
 
         <VerticalLine />
+
+        <Switch />
         <IconMoon src={images.moon} alt="moon.svg" />
       </RightContentContainer>
     </AppBarContainer>
