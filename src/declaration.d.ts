@@ -23,3 +23,9 @@ interface ThemeInterface {
         redColor:"rgba(255,82,82,1)",
     }
 };
+
+interface WordRefInterface {
+        value: string,
+}
+
+type RefObj = React.MutableRefObject<WordRefInterface | undefined>;
