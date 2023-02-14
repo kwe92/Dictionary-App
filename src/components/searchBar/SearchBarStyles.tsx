@@ -44,6 +44,9 @@ const StyledInput = styled.input`
 
   font-size: 1.375rem;
 
+  caret-color: ${({ theme }: { theme: ThemeInterface }) =>
+    theme.otherColors.purpleColor};
+
   &: focus {
     border: none;
     outline: none;
