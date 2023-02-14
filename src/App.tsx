@@ -13,7 +13,7 @@ const App = (props: {}) => {
         <AppContainer>
           <AppBar />
           <SearchBar />
-          <h1>App</h1>;
+          <h1>App</h1>
         </AppContainer>
       </AppContainerWrapper>
     </ThemeProvider>
