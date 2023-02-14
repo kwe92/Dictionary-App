@@ -15,9 +15,9 @@ import {
 
 // TODO Need to figure out how to make the HiX appear when the user types now
 
-const SearchBar = (props: { callback: Function }) => {
+const SearchBar = (props: { callback: Function; setWord: Function }) => {
   const [clear, setClear] = useState(false);
-  const { word, setWord } = useFetch();
+  // const { word, setWord } = useFetch();
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const wordRef: RefObj = useRef();
 
@@ -46,7 +46,7 @@ const SearchBar = (props: { callback: Function }) => {
     wordRef.current!.value = "";
     setEmptyWord(false);
     props.callback(false);
-    setWord(refResult);
+    props.setWord(refResult);
     setClear(false);
   };
 
