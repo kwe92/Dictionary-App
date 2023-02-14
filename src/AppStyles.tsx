@@ -3,8 +3,9 @@ import { Column } from "./styles/layout/Flex";
 
 const AppContainerWrapper = styled(Column)`
   width: 100%;
-  height: 100vh;
-  background: #cd8b62;
+  height: 150vh;
+  // background: ${({ theme }: { theme: ThemeInterface }) =>
+    theme.lightColors.shade3};
   align-items: center;
   justify-content: center;
 `;
@@ -12,7 +13,7 @@ const AppContainerWrapper = styled(Column)`
 const AppContainer = styled(Column)`
   width: 60%;
   height: 100%;
-  background: #7d3865;
+  // background: #7d3865;
 
   @media screen and (max-width: 1300px) {
     width: 88.5%;
