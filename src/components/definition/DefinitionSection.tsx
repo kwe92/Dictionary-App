@@ -10,17 +10,20 @@ import {
   PlayButton,
 } from "./DefinitionSectionStyles";
 
-const DefinitionSection = (props: {}) => (
-  <MainContainer>
-    <ListTile>
-      <ListTileContentContainer>
-        <ListTileTitle>Daemon</ListTileTitle>
-        <ListTileBottom>Dae*Mon</ListTileBottom>
-      </ListTileContentContainer>
+const DefinitionSection = (props: { wordObj: any }) => {
+  console.log("FROM DEFINITION SECTION: ", props.wordObj);
+  return (
+    <MainContainer>
+      <ListTile>
+        <ListTileContentContainer>
+          <ListTileTitle>{props.wordObj["word"]}</ListTileTitle>
+          <ListTileBottom>{`/${props.wordObj["pronunciation"]}/`}</ListTileBottom>
+        </ListTileContentContainer>
 
-      <PlayButton src={images.play} />
-    </ListTile>
-  </MainContainer>
-);
+        <PlayButton src={images.play} />
+      </ListTile>
+    </MainContainer>
+  );
+};
 
 export default DefinitionSection;
