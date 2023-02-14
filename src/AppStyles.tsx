@@ -20,4 +20,10 @@ const AppContainer = styled(Column)`
   }
 `;
 
-export { AppContainer, AppContainerWrapper };
+const ErrorMessage = styled.p`
+  padding-top: 1rem;
+  font-size: 1.25rem;
+  color: ${({ theme }: { theme: ThemeInterface }) =>
+    theme.otherColors.redColor};
+`;
+export { AppContainer, AppContainerWrapper, ErrorMessage };
