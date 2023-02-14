@@ -7,7 +7,7 @@ const AppBarContainer = styled(Row)`
   height: 4rem;
   align-items: center;
   justify-content: space-between;
-  background: lightblue;
+  // background: lightblue;
   margin-top: 3.625rem;
 `;
 
@@ -35,40 +35,63 @@ const DropDownContent = styled(Column)<Props>`
   justify-content: space-evenly;
   width: 11.4375rem;
   height: 9.5rem;
+
   position: absolute;
-  background: #f8b703;
+
+  background: ${({ theme }: { theme: ThemeInterface }) =>
+    theme.lightColors.shade3};
+
   margin-top: 12.825rem;
-  // margin-right: 1.25rem;
+  padding-left: 1.5rem;
+
+  opacity: 0.85;
+
+  cursor: pointer;
+
   border-radius: 0.825rem;
   box-shadow: 1px 2px 6px grey;
   z-index: 1;
 
   @media screen and (max-width: 450px) {
     width: 8.4375rem;
+    padding-left: 1rem;
   }
 `;
 
 const FontDropDownContainer = styled(Row)`
-  height: 4rem;
-  width: 7.5rem;
   align-items: center;
   justify-content: end;
+
+  height: 4rem;
+  width: 7.5rem;
+
   position: relative;
-  background: lightgreen;
+
+  cursor: pointer;
+
   gap: 1.25rem;
   padding-right: 0.5rem;
+
+  // background: lightgreen;
 `;
 
 const VerticalLine = styled.div`
   width: 0.0625rem;
   height: 2rem;
-  background: red;
+  background: ${({ theme }: { theme: ThemeInterface }) =>
+    theme.lightColors.shade1};
 `;
 
 const DropDownItem = styled.p`
   width: 100%;
   padding: 0.675rem 0rem;
-  background: #c1a7b0;
+  color: ${({ theme }: { theme: ThemeInterface }) => theme.darkColors.shade0};
+
+  &: hover {
+    color: ${({ theme }: { theme: ThemeInterface }) =>
+      theme.otherColors.purpleColor};
+  }
+  // background: #c1a7b0;
 `;
 
 export {
