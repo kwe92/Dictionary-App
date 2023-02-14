@@ -12,17 +12,25 @@ import {
   ClearIcon,
 } from "./SearchBarStyles";
 
-// TODO Need to figure out how to mat the HiX appear when the user types now
+// TODO Need to figure out how to make the HiX appear when the user types now
 
 const SearchBar = (props: {}) => {
   const [clear, setClear] = useState(false);
   const { word, setWord } = useFetch();
-
+  const [emptyWord, setEmptyWord] = useState(false);
   const wordRef: RefObj = useRef();
 
   const handleSubmit = (event: any) => {
-    const refResult = wordRef.current!.value;
     event.preventDefault();
+    const refResult = wordRef.current!.value;
+    console.log("Word Ref: ", refResult);
+
+    if (!refResult) {
+      console.log(" EMPTY WORD");
+      setEmptyWord(true);
+      return;
+    }
+    console.log("Event Object: ", event);
     console.log("Submitted Word: ");
     console.log("Word Ref: ", refResult);
     wordRef.current!.value = "";
@@ -36,7 +44,7 @@ const SearchBar = (props: {}) => {
   };
 
   return (
-    <SearchBarContainer>
+    <SearchBarContainer emptyWord={emptyWord}>
       <StyledForm
         onSubmit={handleSubmit}
         onClick={() => {
@@ -55,7 +63,7 @@ const SearchBar = (props: {}) => {
           <ClearIcon />
         </ClearIconContainer>
       )}
-      <SearchIconContainer>
+      <SearchIconContainer onClick={handleSubmit}>
         <SearchIcon src={images.search} alt="seach.svg" />
       </SearchIconContainer>
     </SearchBarContainer>
