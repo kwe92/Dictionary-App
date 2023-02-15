@@ -17,7 +17,11 @@ const DefinitionSection = (props: { wordObj: any }) => {
       <ListTile>
         <ListTileContentContainer>
           <ListTileTitle>{props.wordObj["word"]}</ListTileTitle>
-          <ListTileBottom>{`/${props.wordObj["pronunciation"]}/`}</ListTileBottom>
+          <ListTileBottom>
+            {props.wordObj["pronunciation"]
+              ? `/${props.wordObj["pronunciation"]}/`
+              : ""}
+          </ListTileBottom>
         </ListTileContentContainer>
 
         <PlayButton src={images.play} />
