@@ -18,9 +18,14 @@ const ListTileContentContainer = styled(Column)`
 
 const ListTileTitle = styled.h1`
   font-size: 4rem;
+
+  @media screen and (max-width: 450px) {
+    front-size: 2rem;
+  }
 `;
 const ListTileBottom = styled.p`
   font-size: 1.5rem;
+  font-size: 1.125rem;
 `;
 
 const PlayButton = styled.img``;

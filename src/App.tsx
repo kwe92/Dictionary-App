@@ -12,7 +12,7 @@ const theme = AppTheme;
 const App = (props: {}) => {
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [userInput, setUserInput] = useState("");
-  const { word, setWord } = useFetch(userInput);
+  const { wordPOS, setWord } = useFetch(userInput);
 
   const setEmptyWordCallback = (state: boolean) => {
     setEmptyWord(state);
@@ -25,7 +25,7 @@ const App = (props: {}) => {
           <AppBar />
           <SearchBar callback={setEmptyWordCallback} setWord={setUserInput} />
           {emptyWord && <ErrorMessage>Whoops, can't be empty...</ErrorMessage>}
-          <DefinitionSection wordObj={word} />
+          <DefinitionSection wordObj={wordPOS} />
         </AppContainer>
       </AppContainerWrapper>
     </ThemeProvider>
