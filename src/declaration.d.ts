@@ -28,4 +28,11 @@ interface WordRefInterface {
         value: string,
 }
 
+interface WordInterface {
+    word: string,
+    pronunciation?: string,
+    partOfSpeach: string,
+    definition: string[],
+  }
+
 type RefObj = React.MutableRefObject<WordRefInterface | undefined>;
