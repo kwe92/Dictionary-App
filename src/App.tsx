@@ -6,17 +6,21 @@ import AppBar from "./components/appBar/AppBar";
 import SearchBar from "./components/searchBar/SearchBar";
 import useIsEmpty from "./constants/hooks/useIsEmpty";
 import DefinitionSection from "./components/definition/DefinitionSection";
-import useFetch from "./constants/hooks/useFetch";
+import useFetch from "./constants/hooks/useFetch/useFetch";
 const theme = AppTheme;
 
 const App = (props: {}) => {
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [userInput, setUserInput] = useState("");
-  const { wordPOS, setWord } = useFetch(userInput);
+
+  const { word, setWord } = useFetch(userInput);
 
   const setEmptyWordCallback = (state: boolean) => {
     setEmptyWord(state);
   };
+
+  console.log("FROM DEFINITION APP: ", word);
+  console.log("FROM DEFINITION APP Length: ", word.length);
 
   return (
     <ThemeProvider theme={theme}>
@@ -25,7 +29,7 @@ const App = (props: {}) => {
           <AppBar />
           <SearchBar callback={setEmptyWordCallback} setWord={setUserInput} />
           {emptyWord && <ErrorMessage>Whoops, can't be empty...</ErrorMessage>}
-          <DefinitionSection wordObj={wordPOS} />
+          <DefinitionSection wordObj={word} />
         </AppContainer>
       </AppContainerWrapper>
     </ThemeProvider>
