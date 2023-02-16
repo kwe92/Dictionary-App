@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import useFetch from "../../constants/hooks/useFetch";
+import useFetch from "../../constants/hooks/useFetch/useFetch";
 import useIsEmpty from "../../constants/hooks/useIsEmpty";
 import { images } from "../../constants/images";
 
@@ -20,14 +20,6 @@ const SearchBar = (props: { callback: Function; setWord: Function }) => {
   // const { word, setWord } = useFetch();
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const wordRef: RefObj = useRef();
-
-  // document.getElementById("root")?.addEventListener("click", () => {
-  //   console.log("I HAVE BEEN TOUCHED!");
-  // });
-
-  // document.getElementById("root")?.removeEventListener("click", () => {
-  //   console.log("I HAVE BEEN TOUCHED!");
-  // });
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -85,3 +77,11 @@ const SearchBar = (props: { callback: Function; setWord: Function }) => {
 };
 
 export default SearchBar;
+
+// document.getElementById("root")?.addEventListener("click", () => {
+//   console.log("I HAVE BEEN TOUCHED!");
+// });
+
+// document.getElementById("root")?.removeEventListener("click", () => {
+//   console.log("I HAVE BEEN TOUCHED!");
+// });
