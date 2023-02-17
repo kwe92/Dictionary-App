@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import { images } from "../../constants/images";
 import {
   AppBarContainer,
@@ -15,9 +15,20 @@ import Switch from "./switch/Switch";
 
 // TODO: Tag anonymous functions / callbacks with variable names.
 
-const AppBar = (props: {}) => {
-  const [fontOption, setFontOption] = useState("Sans Serif");
+const AppBar = (props: { getFont: Function }) => {
+  // const [fontOption, setFontOption] = useState("Sans Serif");
+  // Fonts [Roboto Slab: (serif), Manrope (Sans Serif), Roboto Mono (Mono)]
+
+  const [fontOption, setFontOption] = useState({
+    typeface: "Sans Serif",
+    font: "Manrope",
+  });
+
   const [displayDropdown, SetdisplayDropdown] = useState("none");
+
+  useEffect(() => {
+    props.getFont(fontOption);
+  }, [fontOption]);
 
   const dropdownController = () =>
     SetdisplayDropdown((prevState) => (prevState === "none" ? "auto" : "none"));
@@ -26,21 +37,30 @@ const AppBar = (props: {}) => {
     <DropDownContent display={displayDropdown}>
       <DropDownItem
         onClick={() => {
-          setFontOption("Sans Serif");
+          setFontOption({
+            typeface: "Sans Serif",
+            font: "Manrope",
+          });
         }}
       >
         Sans Serif
       </DropDownItem>
       <DropDownItem
         onClick={() => {
-          setFontOption("Serif");
+          setFontOption({
+            typeface: "Serif",
+            font: "Roboto Slab",
+          });
         }}
       >
         Serif
       </DropDownItem>
       <DropDownItem
         onClick={() => {
-          setFontOption("Mon");
+          setFontOption({
+            typeface: "Mono",
+            font: "Roboto Mono",
+          });
         }}
       >
         Mon
@@ -56,7 +76,7 @@ const AppBar = (props: {}) => {
       <RightContentContainer>
         {/* Drop Down */}
         <FontDropDownContainer onClick={dropdownController}>
-          <p style={{ color: "black" }}>{fontOption}</p>
+          <p style={{ color: "black" }}>{fontOption.typeface}</p>
           <DropDownIcon src={images.arrowDown} alt="arrow-down.svg" />
           <DropDownItems />
         </FontDropDownContainer>

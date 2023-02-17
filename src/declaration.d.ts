@@ -35,4 +35,9 @@ interface WordInterface {
     definition: string[],
   }
 
+  interface FontInterface{
+    typeface: string,
+    font: string
+  }
+
 type RefObj = React.MutableRefObject<WordRefInterface | undefined>;

@@ -13,22 +13,31 @@ const theme = AppTheme;
 const App = (props: {}) => {
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [userInput, setUserInput] = useState("");
-
   const { word, setWord } = useFetch(userInput);
+  const [font, setFont] = useState({
+    typeface: "",
+    font: "",
+  });
+
   const setEmptyWordCallback = (state: boolean) => {
     setEmptyWord(state);
   };
+
+  function fontCallback(font: FontInterface): void {
+    console.log("FROM fontCallback: ", font);
+    setFont(font);
+  }
 
   console.log("FROM DEFINITION APP: ", word);
   console.log("FROM DEFINITION APP Length: ", word.length);
 
   return (
     <>
-      <AppGlobalTheme fontFamily={""} />
+      <AppGlobalTheme fontFamily={font.font} />
       <ThemeProvider theme={theme}>
         <AppContainerWrapper>
           <AppContainer>
-            <AppBar />
+            <AppBar getFont={fontCallback} />
             <SearchBar callback={setEmptyWordCallback} setWord={setUserInput} />
             {emptyWord && (
               <ErrorMessage>Whoops, can't be empty...</ErrorMessage>

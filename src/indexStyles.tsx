@@ -10,10 +10,7 @@ const AppGlobalTheme = createGlobalStyle<{ fontFamily: string }>`
 
     // Fonts [Roboto Slab: (serif), Manrope (Sans Serif), Roboto Mono (Mono)]
     body {
-        // TODO Font family should change dynamically
-        // font-family: ${(props) => props.fontFamily};
-        font-family: Manrope;
-
+        font-family: ${(props) => props.fontFamily};
         background: white;
         color: 
     }
