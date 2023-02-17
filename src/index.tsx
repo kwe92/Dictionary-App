@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(ele);
 
 root.render(
   <React.StrictMode>
-    <AppGlobalTheme />
+    {/* <AppGlobalTheme fontFamily={""} /> */}
     <App />
   </React.StrictMode>
 );

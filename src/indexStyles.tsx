@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-const AppGlobalTheme = createGlobalStyle`
+const AppGlobalTheme = createGlobalStyle<{ fontFamily: string }>`
 
     * {
         margin: 0;
@@ -8,10 +8,14 @@ const AppGlobalTheme = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    // Fonts [Roboto Slab: (serif), Manrope (Sans Serif), Roboto Mono (Mono)]
     body {
         // TODO Font family should change dynamically
-        // font-family: ;
+        // font-family: ${(props) => props.fontFamily};
+        font-family: Manrope;
+
         background: white;
+        color: 
     }
 
     li {
