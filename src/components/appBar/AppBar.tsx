@@ -13,7 +13,7 @@ import {
 } from "./AppBarStyles";
 import Switch from "./switch/Switch";
 
-// TODO: Tag anonymous functions / callbacks with variable names
+// TODO: Tag anonymous functions / callbacks with variable names.
 
 const AppBar = (props: {}) => {
   const [fontOption, setFontOption] = useState("Sans Serif");
