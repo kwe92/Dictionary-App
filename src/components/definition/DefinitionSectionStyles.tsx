@@ -14,6 +14,7 @@ const ListTile = styled(Row)`
 
 const ListTileContentContainer = styled(Column)`
   width: 50%;
+  gap: 1rem;
 `;
 
 const ListTileTitle = styled.h1`
@@ -25,7 +26,8 @@ const ListTileTitle = styled.h1`
 `;
 const ListTileBottom = styled.p`
   font-size: 1.5rem;
-  font-size: 1.125rem;
+  color: ${({ theme }: { theme: ThemeInterface }) =>
+    theme.otherColors.purpleColor};
 `;
 
 const PlayButton = styled.img``;
@@ -49,7 +51,10 @@ const HorizonalLine = styled.div`
 const DefinitionTittle = styled(Row)`
   width: 100%;
   align-items: center;
+  font-size: 1.25rem;
   padding-top: 3.125rem;
+
+  color: ${({ theme }: { theme: ThemeInterface }) => theme.lightColors.shade0};
 `;
 
 const DefinitionListTile = styled(Row)`
@@ -57,22 +62,33 @@ const DefinitionListTile = styled(Row)`
   width: 100%;
 `;
 
-const DefinitionListTileContainer = styled(Column)`
+const DefinitionListTileContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
   margin-left: 2rem;
+
+  list-style: none;
+
+  li::before {
+    content: "•";
+    color: ${({ theme }: { theme: ThemeInterface }) =>
+      theme.otherColors.purpleColor};
+    display: inline-block;
+    width: 1rem;
+    margin-left: -1rem;
+  }
 `;
 
-// const Dot = styled.div`
-//   width: 0.375rem;
-//   height: 0.375rem;
-//   border-radius: 50%;
-//   margin: 0rem 0rem 0rem 0rem;
-
-//   background: ${({ theme }: { theme: ThemeInterface }) =>
-//     theme.otherColors.purpleColor};
-// `;
+const StyledListItem = styled.li`
+  font-size: 1.125rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
 
 export {
   MainContainer,
@@ -87,4 +103,22 @@ export {
   // Dot,
   DefinitionListTile,
   DefinitionListTileContainer,
+  StyledListItem,
 };
+
+// const DefinitionListTileContainer = styled(Column)`
+//   align-items: center;
+//   gap: 1rem;
+//   margin-top: 2rem;
+//   margin-left: 2rem;
+// `;
+
+// const Dot = styled.div`
+//   width: 0.375rem;
+//   height: 0.375rem;
+//   border-radius: 50%;
+//   margin: 0rem 0rem 0rem 0rem;
+
+//   background: ${({ theme }: { theme: ThemeInterface }) =>
+//     theme.otherColors.purpleColor};
+// `;

@@ -14,15 +14,42 @@ import {
   MainContainer,
   PlayButton,
   POSContainer,
+  StyledListItem,
 } from "./DefinitionSectionStyles";
 
 const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
-  const definitionList =
+  const DefinitionList =
     props.wordObj.length > 0
-      ? props.wordObj[0].definition.map((definition, index) => (
-          <li key={index * 3.14}>{definition}</li>
-        ))
-      : [""];
+      ? props.wordObj.map((word, index) => {
+          const definitionList = props.wordObj[index].definition.map(
+            (definition, index) => (
+              <StyledListItem key={index * 3.14}>
+                <p
+                  style={{
+                    paddingLeft: "0.75rem",
+                  }}
+                >
+                  {definition}
+                </p>
+              </StyledListItem>
+            )
+          );
+
+          return (
+            <React.Fragment key={index * 3.15}>
+              <POSContainer>
+                <p style={{ fontSize: "1.5rem" }}>{word["partOfSpeach"]}</p>
+                <HorizonalLine />
+              </POSContainer>
+              <DefinitionTittle>Meaning</DefinitionTittle>
+              <DefinitionListTileContainer>
+                {definitionList}
+              </DefinitionListTileContainer>
+            </React.Fragment>
+          );
+        })
+      : null;
+
   return (
     <MainContainer>
       <ListTile>
@@ -39,7 +66,15 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
 
         <PlayButton src={images.play} />
       </ListTile>
-      <POSContainer>
+      {DefinitionList}
+    </MainContainer>
+  );
+};
+
+export default DefinitionSection;
+
+{
+  /* <POSContainer>
         <p>{props.wordObj.length > 0 && props.wordObj[0]["partOfSpeach"]}</p>
         <HorizonalLine />
       </POSContainer>
@@ -55,9 +90,5 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
         >
           {definitionList}
         </ul>
-      </DefinitionListTileContainer>
-    </MainContainer>
-  );
-};
-
-export default DefinitionSection;
+      </DefinitionListTileContainer> */
+}
