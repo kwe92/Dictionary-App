@@ -6,7 +6,7 @@ import newWindow from "../../assets/images/icon-new-window.svg";
 import play from "../../assets/images/icon-play.svg";
 import search from "../../assets/images/icon-search.svg";
 import logo from "../../assets/images/logo.svg";
-
+import sadFace from "../../assets/images/sadface_nbg.png";
 export default {
   arrowDown,
   moon,
@@ -14,4 +14,5 @@ export default {
   play,
   search,
   logo,
+  sadFace,
 };
