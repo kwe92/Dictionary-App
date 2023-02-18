@@ -1,11 +1,38 @@
 import styled from "styled-components";
 import { Column, Row } from "../../styles/layout/Flex";
 
-const MainContainer = styled(Column)`
+interface _ModeInterface {
+  lightMode: boolean;
+}
+const MainContainer = styled(Column)<_ModeInterface>`
   width: 100%;
   height: 100%;
   // background: #d9e3da;
   padding-top: 3.625rem;
+
+  p {
+    color: ${({
+      lightMode,
+      theme,
+    }: {
+      lightMode: boolean;
+      theme: ThemeInterface;
+    }) => {
+      return lightMode ? theme.darkColors.shade0 : theme.lightColors.shade3;
+    }};
+  }
+
+  h1 {
+    color: ${({
+      lightMode,
+      theme,
+    }: {
+      lightMode: boolean;
+      theme: ThemeInterface;
+    }) => {
+      return lightMode ? theme.darkColors.shade0 : theme.lightColors.shade3;
+    }};
+  }
 `;
 
 const ListTile = styled(Row)`
@@ -24,10 +51,9 @@ const ListTileTitle = styled.h1`
     front-size: 2rem;
   }
 `;
+
 const ListTileBottom = styled.p`
   font-size: 1.5rem;
-  color: ${({ theme }: { theme: ThemeInterface }) =>
-    theme.otherColors.purpleColor};
 `;
 
 const PlayButton = styled.img``;

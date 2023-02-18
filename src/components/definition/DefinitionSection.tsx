@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { images } from "../../constants/images";
+import AppTheme from "../../styles/theme/AppTheme";
 
 import {
   DefinitionListTile,
@@ -18,6 +19,7 @@ import {
 } from "./DefinitionSectionStyles";
 
 const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
+  const isLightMode = true;
   const DefinitionList =
     props.wordObj.length > 0
       ? props.wordObj.map((word, index) => {
@@ -38,7 +40,13 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
           return (
             <React.Fragment key={index * 3.15}>
               <POSContainer>
-                <p style={{ fontSize: "1.5rem" }}>{word["partOfSpeach"]}</p>
+                <p
+                  style={{
+                    fontSize: "1.5rem",
+                  }}
+                >
+                  {word["partOfSpeach"]}
+                </p>
                 <HorizonalLine />
               </POSContainer>
               <DefinitionTittle>Meaning</DefinitionTittle>
@@ -51,13 +59,13 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
       : null;
 
   return (
-    <MainContainer>
+    <MainContainer lightMode={isLightMode}>
       <ListTile>
         <ListTileContentContainer>
           <ListTileTitle>
             {props.wordObj.length > 0 && props.wordObj[0]["word"]}
           </ListTileTitle>
-          <ListTileBottom>
+          <ListTileBottom style={{ color: AppTheme.otherColors.purpleColor }}>
             {props.wordObj[0] && props.wordObj[0]["pronunciation"]
               ? `/${props.wordObj[0]["pronunciation"]}/`
               : ""}
