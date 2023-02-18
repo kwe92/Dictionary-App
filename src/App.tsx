@@ -9,9 +9,13 @@ import DefinitionSection from "./components/definition/DefinitionSection";
 import useFetch from "./constants/hooks/useFetch/useFetch";
 import AppGlobalTheme from "./indexStyles";
 import { ErrorPage } from "./components/errorPage/ErrorPage";
-const theme = AppTheme;
 
 const App = (props: {}) => {
+  // TODO: Add Light Mode
+  const theme = AppTheme;
+  const lightMode = { backGround: theme.lightColors.shade3 };
+  const darkMode = {};
+
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [noDef, setNoDef] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -20,6 +24,7 @@ const App = (props: {}) => {
     typeface: "",
     font: "",
   });
+  const [mode, setMode] = useState();
 
   const setEmptyWordCallback = (state: boolean) => {
     setEmptyWord(state);
@@ -35,7 +40,7 @@ const App = (props: {}) => {
 
   return (
     <>
-      <AppGlobalTheme fontFamily={font.font} />
+      <AppGlobalTheme fontFamily={font.font} theme={theme} />
       <ThemeProvider theme={theme}>
         <AppContainerWrapper>
           <AppContainer>

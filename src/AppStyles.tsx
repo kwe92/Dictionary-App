@@ -10,6 +10,7 @@ const AppContainerWrapper = styled(Column)`
 
   // background: ${({ theme }: { theme: ThemeInterface }) =>
     theme.lightColors.shade3};
+
   align-items: center;
   justify-content: center;
 `;
