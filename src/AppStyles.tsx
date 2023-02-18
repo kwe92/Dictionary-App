@@ -3,7 +3,11 @@ import { Column } from "./styles/layout/Flex";
 
 const AppContainerWrapper = styled(Column)`
   width: 100%;
-  height: 200vh;
+  height: fit-content;
+  margin-bottom: 5rem;
+
+  // height: 200vh;
+
   // background: ${({ theme }: { theme: ThemeInterface }) =>
     theme.lightColors.shade3};
   align-items: center;
