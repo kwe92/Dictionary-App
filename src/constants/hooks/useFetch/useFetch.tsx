@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { wordModel } from "../../models/WordModel";
 
 // TODO: Get the plural of a word and return the word definition
+const _initWord: WordInterface = {
+  word: "",
+  pronunciation: "",
+  partOfSpeach: "",
+  definition: [""],
+};
 
-const useFetch = (userInput: string) => {
-  const initWord: WordInterface = {
-    word: "",
-    pronunciation: "",
-    partOfSpeach: "",
-    definition: [""],
-  };
-  const [word, setWord] = useState([initWord]);
+const useFetch = (userInput: string, setError: Function) => {
+  const [word, setWord] = useState([_initWord]);
 
   const endpint = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${userInput}?key=${process.env.REACT_APP_API_KEY}`;
 
@@ -23,7 +23,31 @@ const useFetch = (userInput: string) => {
     console.log("Data: ", data.data);
 
     console.log("Data All: ", data.data);
+    console.log("Data type: ", typeof data.data);
 
+    if (data.data === "Word is required.") {
+      console.log("Word is required. FOUND!");
+      wordDefinitions = [_initWord];
+      setWord(wordDefinitions);
+      return;
+    }
+    if (data.data === undefined) {
+      console.log("undefined FOUND!");
+
+      wordDefinitions = [_initWord];
+      setWord(wordDefinitions);
+      setError(true);
+      return;
+    }
+    if (Array.isArray(data.data) === true) {
+      if (typeof data.data[0] === "string") {
+        console.log("String ARRAY FOUND!");
+        wordDefinitions = [_initWord];
+        setWord(wordDefinitions);
+        setError(true);
+        return;
+      }
+    }
     for (let i = 0; i < data.data.length; i++) {
       if (
         data.data[i]["hwi"]["hw"].replaceAll("*", "") ===
@@ -38,11 +62,12 @@ const useFetch = (userInput: string) => {
           definition: data.data[i]["shortdef"],
         });
 
-        wordDefinitions.push(wordObject);
+        wordDefinitions!.push(wordObject);
       }
     }
 
     setWord(wordDefinitions);
+    setError(false);
   };
 
   useEffect(() => {
