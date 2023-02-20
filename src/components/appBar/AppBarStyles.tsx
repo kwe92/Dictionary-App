@@ -38,9 +38,6 @@ const DropDownContent = styled(Column)<Props>`
 
   position: absolute;
 
-  background: ${({ theme }: { theme: ThemeInterface }) =>
-    theme.lightColors.shade3};
-
   margin-top: 12.825rem;
   padding-left: 1.5rem;
 
@@ -49,7 +46,9 @@ const DropDownContent = styled(Column)<Props>`
   cursor: pointer;
 
   border-radius: 0.825rem;
-  box-shadow: 1px 2px 6px grey;
+
+  // box-shadow: 1px 2px 6px grey;
+
   z-index: 1;
 
   @media screen and (max-width: 450px) {
@@ -80,13 +79,15 @@ const VerticalLine = styled.div`
   height: 2rem;
   background: ${({ theme }: { theme: ThemeInterface }) =>
     theme.lightColors.shade1};
+
+  @media screen and (max-width: 450px) {
+    margin: 0 0.375rem;
+  }
 `;
 
 const DropDownItem = styled.p`
   width: 100%;
   padding: 0.675rem 0rem;
-  color: ${({ theme }: { theme: ThemeInterface }) => theme.darkColors.shade0};
-
   &: hover {
     color: ${({ theme }: { theme: ThemeInterface }) =>
       theme.otherColors.purpleColor};
