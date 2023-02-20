@@ -13,9 +13,6 @@ import { ErrorPage } from "./components/errorPage/ErrorPage";
 const App = (props: {}) => {
   // TODO: Add Light Mode
   const theme = AppTheme;
-  const lightMode = { backGround: theme.lightColors.shade3 };
-  const darkMode = {};
-
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [noDef, setNoDef] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -24,7 +21,7 @@ const App = (props: {}) => {
     typeface: "",
     font: "",
   });
-  const [mode, setMode] = useState();
+  const [mode, setMode] = useState(true);
 
   const setEmptyWordCallback = (state: boolean) => {
     setEmptyWord(state);
@@ -40,11 +37,11 @@ const App = (props: {}) => {
 
   return (
     <>
-      <AppGlobalTheme fontFamily={font.font} theme={theme} />
+      <AppGlobalTheme fontFamily={font.font} theme={theme} lightMode={mode} />
       <ThemeProvider theme={theme}>
         <AppContainerWrapper>
           <AppContainer>
-            <AppBar getFont={fontCallback} />
+            <AppBar getFont={fontCallback} setMode={setMode} />
             <SearchBar callback={setEmptyWordCallback} setWord={setUserInput} />
             {emptyWord && (
               <ErrorMessage>Whoops, can't be empty...</ErrorMessage>

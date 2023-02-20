@@ -8,6 +8,10 @@ const MainContainer = styled(Column)`
   height: 26rem;
   //   background: lightgreen;
   margin-top: 5rem;
+
+  @media screen and (max-width: 450px) {
+    margin-top: 1.5rem;
+  }
 `;
 
 const IconSadFace = styled.img`
@@ -15,11 +19,16 @@ const IconSadFace = styled.img`
   width: 10rem;
 `;
 
-const ErrorTittle = styled.h1``;
+const ErrorTittle = styled.h1`
+  @media screen and (max-width: 450px) {
+    font-size: 1.5rem;
+  }
+`;
 
 const ErrorBody = styled.p`
   font-size: 1.125rem;
   text-align: center;
+  color: ${({ theme }: { theme: ThemeInterface }) => theme.lightColors.shade0};
 `;
 
 // const IconImageContainer = styled.div``;

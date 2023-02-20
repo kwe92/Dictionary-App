@@ -12,8 +12,6 @@ const SearchBarContainer = styled(Row)<Props>`
   width: 100%;
   height: 4rem;
   margin-top: 2.5rem;
-  background: ${({ theme }: { theme: ThemeInterface }) =>
-    theme.lightColors.shade2};
 
   // &: focus-within {
   //   border: 1px solid
@@ -74,6 +72,7 @@ const SearchIcon = styled.img`
   @media screen and (max-width: 450px) {
     width: auto;
     height: auto;
+    margin-right: 1rem;
   }
 `;
 
@@ -90,6 +89,10 @@ const ClearIconContainer = styled(Row)`
   width: 10%;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 450px) {
+    margin-right: 0.5rem;
+  }
 `;
 
 const ClearIcon = styled(HiX)`

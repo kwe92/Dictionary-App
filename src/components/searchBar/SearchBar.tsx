@@ -50,7 +50,7 @@ const SearchBar = (props: { callback: Function; setWord: Function }) => {
   };
 
   return (
-    <SearchBarContainer emptyWord={emptyWord}>
+    <SearchBarContainer id="search-bar" emptyWord={emptyWord}>
       <StyledForm
         onSubmit={handleSubmit}
         onClick={() => {

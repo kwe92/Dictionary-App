@@ -4,6 +4,7 @@ import AppTheme from "./styles/theme/AppTheme";
 const AppGlobalTheme = createGlobalStyle<{
   fontFamily: string;
   theme: ThemeInterface;
+  lightMode: boolean;
 }>`
 
     * {
@@ -13,11 +14,56 @@ const AppGlobalTheme = createGlobalStyle<{
     }
 
     // Fonts [Roboto Slab: (serif), Manrope (Sans Serif), Roboto Mono (Mono)]
+    // TODO: Change based on theme
     body {
         font-family: ${(props) => props.fontFamily};
-        // background: ${(props) => props.theme.darkColors.shade0};
-        background: ${(props) => props.theme.lightColors.shade3};
+        background: ${(props) =>
+          props.lightMode
+            ? props.theme.lightColors.shade3
+            : props.theme.darkColors.shade0};
+        color: ${(props) =>
+          props.lightMode
+            ? props.theme.darkColors.shade0
+            : props.theme.lightColors.shade3};
+       
+        #drop-down {
+        background: ${(props) =>
+          props.lightMode
+            ? props.theme.lightColors.shade3
+            : props.theme.darkColors.shade0};
+        box-shadow: 0 0 1rem ${(props) =>
+          props.lightMode
+            ? props.theme.lightColors.shade1
+            : props.theme.otherColors.purpleColor};
 
+        }
+    // TODO: Change based on theme
+        #search-bar{
+            background: ${(props) =>
+              props.lightMode
+                ? props.theme.lightColors.shade2
+                : props.theme.darkColors.shade1};
+              
+        }
+
+        #icon-moon {
+            color: orange;
+        }
+
+        svg{
+            stroke:  ${(props) =>
+              props.lightMode
+                ? props.theme.lightColors.shade0
+                : props.theme.otherColors.purpleColor};
+        }
+
+    }
+    // TODO: Change based on theme
+    input{
+        color: ${(props) =>
+          props.lightMode
+            ? props.theme.darkColors.shade0
+            : props.theme.lightColors.shade3};
     }
 
     li {
