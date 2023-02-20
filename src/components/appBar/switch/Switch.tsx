@@ -1,8 +1,14 @@
 import SwitchComponent from "@mui/material/Switch";
+import { MouseEventHandler } from "react";
 import StyledSwitch from "./SwitchStyles";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-const Switch = (props: {}) => <StyledSwitch {...label} />;
+const Switch = (props: { onClick: Function }) => (
+  <StyledSwitch
+    {...label}
+    onClick={props.onClick as MouseEventHandler<HTMLButtonElement>}
+  />
+);
 
 export default Switch;
