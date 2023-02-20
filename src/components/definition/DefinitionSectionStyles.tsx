@@ -9,30 +9,6 @@ const MainContainer = styled(Column)<_ModeInterface>`
   height: 100%;
   // background: #d9e3da;
   padding-top: 3.625rem;
-
-  p {
-    color: ${({
-      lightMode,
-      theme,
-    }: {
-      lightMode: boolean;
-      theme: ThemeInterface;
-    }) => {
-      return lightMode ? theme.darkColors.shade0 : theme.lightColors.shade3;
-    }};
-  }
-
-  h1 {
-    color: ${({
-      lightMode,
-      theme,
-    }: {
-      lightMode: boolean;
-      theme: ThemeInterface;
-    }) => {
-      return lightMode ? theme.darkColors.shade0 : theme.lightColors.shade3;
-    }};
-  }
 `;
 
 const ListTile = styled(Row)`
@@ -48,12 +24,16 @@ const ListTileTitle = styled.h1`
   font-size: 4rem;
 
   @media screen and (max-width: 450px) {
-    front-size: 2rem;
+    font-size: 2rem;
   }
 `;
 
 const ListTileBottom = styled.p`
   font-size: 1.5rem;
+
+  @media screen and (max-width: 450px) {
+    font-size: 1rem;
+  }
 `;
 
 const PlayButton = styled.img``;
@@ -107,13 +87,16 @@ const DefinitionListTileContainer = styled.ul`
     width: 1rem;
     margin-left: -1rem;
   }
+
+  @media screen and (max-width: 450px) {
+    margin-left: 0.75rem;
+  }
 `;
 
 const StyledListItem = styled.li`
   font-size: 1.125rem;
   width: 100%;
   display: flex;
-  align-items: center;
 `;
 
 export {

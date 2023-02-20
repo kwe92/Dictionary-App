@@ -19,7 +19,7 @@ import {
 } from "./DefinitionSectionStyles";
 
 const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
-  const isLightMode = true;
+  const isLightMode = false;
   const DefinitionList =
     props.wordObj.length > 0
       ? props.wordObj.map((word, index) => {
