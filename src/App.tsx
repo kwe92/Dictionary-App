@@ -11,7 +11,10 @@ import AppGlobalTheme from "./indexStyles";
 import { ErrorPage } from "./components/errorPage/ErrorPage";
 
 const App = (props: {}) => {
-  // TODO: Add Light Mode
+  // TODO Add Audio file
+  // Example: https://media.merriam-webster.com/audio/prons/en/us/mp3/f/free0001.mp3
+  // https://media.merriam-webster.com/audio/prons/en/us/mp3/{first_letter_of_filename}/{file_name}.mp3
+
   const theme = AppTheme;
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [noDef, setNoDef] = useState(false);
