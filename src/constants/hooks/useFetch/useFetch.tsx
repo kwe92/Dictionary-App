@@ -3,7 +3,11 @@ import axios from "axios";
 import { wordModel } from "../../models/WordModel";
 
 // TODO: Get the plural of a word and return the word definition
-const _initWord: WordInterface = {
+// TODO: Add Audio file
+// Example: https://media.merriam-webster.com/audio/prons/en/us/mp3/f/free0001.mp3
+// https://media.merriam-webster.com/audio/prons/en/us/mp3/{first_letter_of_filename}/{file_name}.mp3
+// TODO: Parse spaces from user input
+const initWord: WordInterface = {
   word: "",
   pronunciation: "",
   partOfSpeach: "",
@@ -11,7 +15,8 @@ const _initWord: WordInterface = {
 };
 
 const useFetch = (userInput: string, setError: Function) => {
-  const [word, setWord] = useState([_initWord]);
+  const [word, setWord] = useState([initWord]);
+  const [otherWords, setOtherWords] = useState([]);
 
   const endpint = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${userInput}?key=${process.env.REACT_APP_API_KEY}`;
 
@@ -27,32 +32,30 @@ const useFetch = (userInput: string, setError: Function) => {
 
     if (data.data === "Word is required.") {
       console.log("Word is required. FOUND!");
-      wordDefinitions = [_initWord];
+      wordDefinitions = [initWord];
       setWord(wordDefinitions);
       return;
     }
     if (data.data === undefined) {
       console.log("undefined FOUND!");
-
-      wordDefinitions = [_initWord];
-      setWord(wordDefinitions);
       setError(true);
       return;
     }
     if (Array.isArray(data.data) === true) {
       if (typeof data.data[0] === "string") {
         console.log("String ARRAY FOUND!");
-        wordDefinitions = [_initWord];
-        setWord(wordDefinitions);
+        setOtherWords(data.data);
         setError(true);
         return;
       }
     }
     for (let i = 0; i < data.data.length; i++) {
-      if (
-        data.data[i]["hwi"]["hw"].replaceAll("*", "") ===
-        userInput.toLocaleLowerCase()
-      ) {
+      const searchedWord = userInput.replaceAll(" ", "").toLocaleLowerCase();
+      const returnedWord = data.data[i]["hwi"]["hw"].replaceAll("*", "");
+
+      if (searchedWord === returnedWord) {
+        // TODO: REMOVE DUPLICATE
+
         const wordObject = wordModel({
           word: userInput.toLowerCase(),
           pronunciation:
@@ -64,8 +67,32 @@ const useFetch = (userInput: string, setError: Function) => {
 
         wordDefinitions!.push(wordObject);
       }
-    }
 
+      if (
+        wordDefinitions.length === 0 &&
+        data.data[i]["meta"].hasOwnProperty("stems")
+      ) {
+        const stemsArray = data.data[i]["meta"]["stems"];
+        console.log("Stems: ", stemsArray.includes(searchedWord));
+        if (stemsArray.includes(searchedWord)) {
+          // TODO: REMOVE DUPLICATE
+          const wordObject = wordModel({
+            word: stemsArray[0],
+            pronunciation:
+              data.data[i]["hwi"].hasOwnProperty("prs") &&
+              data.data[i]["hwi"]["prs"][0]["mw"],
+            partOfSpeach: data.data[i]["fl"],
+            definition: data.data[i]["shortdef"],
+          });
+
+          wordDefinitions!.push(wordObject);
+        }
+      }
+    }
+    if (wordDefinitions.length === 0) {
+      setError(true);
+      return;
+    }
     setWord(wordDefinitions);
     setError(false);
   };
@@ -76,25 +103,7 @@ const useFetch = (userInput: string, setError: Function) => {
 
   console.log("wordDefinitions: ", wordDefinitions);
 
-  return { word, setWord };
+  return { word, setWord, otherWords };
 };
 
 export default useFetch;
-
-// setWord(wordObject as any);
-
-// if (
-//   data.data[0]["hwi"]["hw"] === userInput.toLocaleLowerCase() ||
-//   (data.data[0]["meta"]["id"] === userInput.toLocaleLowerCase() &&
-//     data.data[0]["fl"] === "noun")
-// ) {
-//   const wordObject = {
-//     word: userInput.toLowerCase(),
-//     pronunciation: data.data[0]["hwi"]["prs"][0]["mw"],
-//     partOfSpeach: data.data[0]["fl"],
-//     definition: data.data[0]["shortdef"],
-//   };
-//   setWord(wordObject as any);
-// }
-
-// data.data[i]["meta"]["id"] === userInput.toLocaleLowerCase()
