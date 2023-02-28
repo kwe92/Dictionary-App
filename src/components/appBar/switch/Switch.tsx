@@ -1,4 +1,3 @@
-import SwitchComponent from "@mui/material/Switch";
 import { MouseEventHandler } from "react";
 import StyledSwitch from "./SwitchStyles";
 
