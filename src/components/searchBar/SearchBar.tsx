@@ -1,4 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, {
+  FormEvent,
+  MouseEvent,
+  MutableRefObject,
+  RefObject,
+  useRef,
+  useState,
+} from "react";
 import useFetch from "../../constants/hooks/useFetch/useFetch";
 import useIsEmpty from "../../constants/hooks/useIsEmpty";
 import { images } from "../../constants/images";
@@ -13,28 +20,25 @@ import {
   ClearIcon,
 } from "./SearchBarStyles";
 
-// TODO Need to figure out how to make the HiX appear when the user types now
+type Event = FormEvent<HTMLFormElement> | MouseEvent<HTMLDivElement>;
+type Ref = MutableRefObject<HTMLInputElement | null | undefined>;
 
 const SearchBar = (props: { callback: Function; setWord: Function }) => {
   const [clear, setClear] = useState(false);
-  // const { word, setWord } = useFetch();
   const { emptyWord, setEmptyWord } = useIsEmpty();
-  const wordRef: RefObj = useRef();
+  const wordRef: Ref = useRef();
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: Event) => {
     event.preventDefault();
     const refResult = wordRef.current!.value;
+    console.log("Event Object: ", event);
     console.log("Word Ref: ", refResult);
 
     if (!refResult) {
-      console.log(" EMPTY WORD");
       setEmptyWord(true);
       props.callback(true);
       return;
     }
-    console.log("Event Object: ", event);
-    console.log("Submitted Word: ");
-    console.log("Word Ref: ", refResult);
     wordRef.current!.value = "";
     setEmptyWord(false);
     props.callback(false);
@@ -59,8 +63,7 @@ const SearchBar = (props: { callback: Function; setWord: Function }) => {
       >
         <StyledInput
           placeholder="Search for any word..."
-          // value={userInput}
-          ref={wordRef as unknown as any}
+          ref={wordRef as RefObject<HTMLInputElement>}
         />
       </StyledForm>
 
@@ -77,11 +80,3 @@ const SearchBar = (props: { callback: Function; setWord: Function }) => {
 };
 
 export default SearchBar;
-
-// document.getElementById("root")?.addEventListener("click", () => {
-//   console.log("I HAVE BEEN TOUCHED!");
-// });
-
-// document.getElementById("root")?.removeEventListener("click", () => {
-//   console.log("I HAVE BEEN TOUCHED!");
-// });
