@@ -8,7 +8,10 @@ const AppBarContainer = styled(Row)`
   align-items: center;
   justify-content: space-between;
   // background: lightblue;
-  margin-top: 3.625rem;
+  margin-top: 2.625rem;
+  @media screen and (max-width: 450px) {
+    margin-top: 1.125rem;
+  }
 `;
 
 const RightContentContainer = styled(Row)`
