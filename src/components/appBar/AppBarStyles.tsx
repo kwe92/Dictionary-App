@@ -7,7 +7,6 @@ const AppBarContainer = styled(Row)`
   height: 4rem;
   align-items: center;
   justify-content: space-between;
-  // background: lightblue;
   margin-top: 2.625rem;
   @media screen and (max-width: 450px) {
     margin-top: 1.125rem;
@@ -50,8 +49,6 @@ const DropDownContent = styled(Column)<Props>`
 
   border-radius: 0.825rem;
 
-  // box-shadow: 1px 2px 6px grey;
-
   z-index: 1;
 
   @media screen and (max-width: 450px) {
@@ -73,8 +70,6 @@ const FontDropDownContainer = styled(Row)`
 
   gap: 1.25rem;
   padding-right: 0.5rem;
-
-  // background: lightgreen;
 `;
 
 const VerticalLine = styled.div`
@@ -95,7 +90,6 @@ const DropDownItem = styled.p`
     color: ${({ theme }: { theme: ThemeInterface }) =>
       theme.otherColors.purpleColor};
   }
-  // background: #c1a7b0;
 `;
 
 export {
