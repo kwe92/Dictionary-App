@@ -1,13 +1,9 @@
 import styled from "styled-components";
 import { Column, Row } from "../../styles/layout/Flex";
 
-interface _ModeInterface {
-  lightMode: boolean;
-}
-const MainContainer = styled(Column)<_ModeInterface>`
+const MainContainer = styled(Column)`
   width: 100%;
   height: 100%;
-  // background: #d9e3da;
   padding-top: 3.625rem;
 
   @media screen and (max-width: 450px) {
