@@ -40,13 +40,7 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
           return (
             <React.Fragment key={index * 3.15}>
               <POSContainer>
-                <p
-                // style={{
-                //   fontSize: "1.5rem",
-                // }}
-                >
-                  {word["partOfSpeach"]}
-                </p>
+                <p>{word["partOfSpeach"]}</p>
                 <HorizonalLine />
               </POSContainer>
               <DefinitionTittle>Meaning</DefinitionTittle>
@@ -72,7 +66,15 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
           </ListTileBottom>
         </ListTileContentContainer>
 
-        <PlayButton src={images.play} />
+        <PlayButton
+          src={images.play}
+          onClick={() => {
+            const audio = new Audio(
+              "https://media.merriam-webster.com/audio/prons/en/us/mp3/f/free0001.mp3"
+            );
+            audio.play();
+          }}
+        />
       </ListTile>
       {DefinitionList}
     </MainContainer>
