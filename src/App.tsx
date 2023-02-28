@@ -11,19 +11,17 @@ import AppGlobalTheme from "./indexStyles";
 import { ErrorPage } from "./components/errorPage/ErrorPage";
 
 const App = (props: {}) => {
-  // TODO Add Audio file
-  // Example: https://media.merriam-webster.com/audio/prons/en/us/mp3/f/free0001.mp3
-  // https://media.merriam-webster.com/audio/prons/en/us/mp3/{first_letter_of_filename}/{file_name}.mp3
-
   const theme = AppTheme;
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [noDef, setNoDef] = useState(false);
   const [userInput, setUserInput] = useState("");
-  const { word, setWord } = useFetch(userInput, setNoDef);
+  const { word, otherWords } = useFetch(userInput, setNoDef);
   const [font, setFont] = useState({
     typeface: "",
     font: "",
   });
+
+  console.log("Other Word Choices:", otherWords);
   const [mode, setMode] = useState(true);
 
   const setEmptyWordCallback = (state: boolean) => {
@@ -49,8 +47,14 @@ const App = (props: {}) => {
             {emptyWord && (
               <ErrorMessage>Whoops, can't be empty...</ErrorMessage>
             )}
-            <DefinitionSectionEle word={word} />
-            {noDef && <ErrorPage unknownWord={userInput} />}
+            {!noDef && <DefinitionSectionEle word={word} />}
+            {noDef && (
+              <ErrorPage
+                unknownWord={userInput}
+                setUserInput={setUserInput}
+                otherWords={otherWords}
+              />
+            )}
           </AppContainer>
         </AppContainerWrapper>
       </ThemeProvider>

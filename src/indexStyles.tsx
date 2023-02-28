@@ -14,7 +14,7 @@ const AppGlobalTheme = createGlobalStyle<{
     }
 
     // Fonts [Roboto Slab: (serif), Manrope (Sans Serif), Roboto Mono (Mono)]
-    // TODO: Change based on theme
+
     body {
         font-family: ${(props) => props.fontFamily};
         background: ${(props) =>
@@ -37,7 +37,7 @@ const AppGlobalTheme = createGlobalStyle<{
             : props.theme.otherColors.purpleColor};
 
         }
-    // TODO: Change based on theme
+
         #search-bar{
             background: ${(props) =>
               props.lightMode
@@ -58,7 +58,7 @@ const AppGlobalTheme = createGlobalStyle<{
         }
 
     }
-    // TODO: Change based on theme
+
     input{
         color: ${(props) =>
           props.lightMode

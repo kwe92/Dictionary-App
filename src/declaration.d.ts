@@ -39,5 +39,3 @@ interface WordInterface {
     typeface: string,
     font: string
   }
-
-type RefObj = React.MutableRefObject<WordRefInterface | undefined>;
