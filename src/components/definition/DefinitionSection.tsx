@@ -41,9 +41,9 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
             <React.Fragment key={index * 3.15}>
               <POSContainer>
                 <p
-                  style={{
-                    fontSize: "1.5rem",
-                  }}
+                // style={{
+                //   fontSize: "1.5rem",
+                // }}
                 >
                   {word["partOfSpeach"]}
                 </p>
