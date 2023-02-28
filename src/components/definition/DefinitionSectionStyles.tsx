@@ -50,14 +50,12 @@ const POSContainer = styled(Row)`
   align-items: center;
   width: 100%;
   padding-top: 3.375rem;
-  gap: 5%;
+  gap: 2.5%;
   font-size: 1.5rem;
   @media screen and (max-width: 450px) {
     padding-top: 2.75rem;
     font-size: 1.125rem;
   }
-  // height: ;
-  // justify-content: center;
 `;
 
 const HorizonalLine = styled.div`
