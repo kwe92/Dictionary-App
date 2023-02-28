@@ -11,7 +11,7 @@ const SearchBarContainer = styled(Row)<Props>`
   justify-content: space-between;
   width: 100%;
   height: 4rem;
-  margin-top: 2.5rem;
+  margin-top: 3.5rem;
 
   // &: focus-within {
   //   border: 1px solid
@@ -28,6 +28,10 @@ const SearchBarContainer = styled(Row)<Props>`
   }
 
   border-radius: 0.75rem;
+
+  @media screen and (max-width: 450px) {
+    margin-top: 2.5rem;
+  }
 `;
 
 const StyledInput = styled.input`
