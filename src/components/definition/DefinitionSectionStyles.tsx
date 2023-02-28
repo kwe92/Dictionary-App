@@ -9,6 +9,10 @@ const MainContainer = styled(Column)<_ModeInterface>`
   height: 100%;
   // background: #d9e3da;
   padding-top: 3.625rem;
+
+  @media screen and (max-width: 450px) {
+    padding-top: 3.25rem;
+  }
 `;
 
 const ListTile = styled(Row)`
@@ -36,13 +40,22 @@ const ListTileBottom = styled.p`
   }
 `;
 
-const PlayButton = styled.img``;
+const PlayButton = styled.img`
+  @media screen and (max-width: 450px) {
+    width: 4rem;
+  }
+`;
 
 const POSContainer = styled(Row)`
   align-items: center;
   width: 100%;
   padding-top: 3.375rem;
   gap: 5%;
+  font-size: 1.5rem;
+  @media screen and (max-width: 450px) {
+    padding-top: 2.75rem;
+    font-size: 1.125rem;
+  }
   // height: ;
   // justify-content: center;
 `;
@@ -51,7 +64,7 @@ const HorizonalLine = styled.div`
   width: 100%;
   height: 0.0625rem;
   background: ${({ theme }: { theme: ThemeInterface }) =>
-    theme.lightColors.shade1};
+    theme.lightColors.shade0};
 `;
 
 const DefinitionTittle = styled(Row)`
@@ -61,6 +74,11 @@ const DefinitionTittle = styled(Row)`
   padding-top: 3.125rem;
 
   color: ${({ theme }: { theme: ThemeInterface }) => theme.lightColors.shade0};
+
+  @media screen and (max-width: 450px) {
+    padding-top: 2.5rem;
+    font-size: 1rem;
+  }
 `;
 
 const DefinitionListTile = styled(Row)`
@@ -97,6 +115,10 @@ const StyledListItem = styled.li`
   font-size: 1.125rem;
   width: 100%;
   display: flex;
+
+  @media screen and (max-width: 450px) {
+    font-size: 1rem;
+  }
 `;
 
 export {
