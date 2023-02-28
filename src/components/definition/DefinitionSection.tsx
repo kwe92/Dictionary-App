@@ -19,7 +19,6 @@ import {
 } from "./DefinitionSectionStyles";
 
 const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
-  const isLightMode = false;
   const DefinitionList =
     props.wordObj.length > 0
       ? props.wordObj.map((word, index) => {
@@ -53,7 +52,7 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
       : null;
 
   return (
-    <MainContainer lightMode={isLightMode}>
+    <MainContainer>
       <ListTile>
         <ListTileContentContainer>
           <ListTileTitle>
@@ -82,23 +81,3 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
 };
 
 export default DefinitionSection;
-
-{
-  /* <POSContainer>
-        <p>{props.wordObj.length > 0 && props.wordObj[0]["partOfSpeach"]}</p>
-        <HorizonalLine />
-      </POSContainer>
-      <DefinitionTittle>Meaning</DefinitionTittle>
-      <DefinitionListTileContainer>
-        <ul
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            gap: "1rem",
-          }}
-        >
-          {definitionList}
-        </ul>
-      </DefinitionListTileContainer> */
-}
