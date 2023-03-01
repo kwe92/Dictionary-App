@@ -68,7 +68,11 @@ const useFetch = (
             data.data[i]["hwi"]["prs"][0]["mw"],
           partOfSpeach: data.data[i]["fl"],
           definition: data.data[i]["shortdef"],
-          audio: "",
+          audio: data.data[i]["hwi"].hasOwnProperty("prs")
+            ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${
+                data.data[i]["hwi"]["prs"][0]["sound"]["audio"].split("")[0]
+              }/${data.data[i]["hwi"]["prs"][0]["sound"]["audio"]}.mp3`
+            : "",
         });
 
         wordDefinitions!.push(wordObject);
