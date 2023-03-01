@@ -15,7 +15,7 @@ const App = (props: {}) => {
   const { emptyWord, setEmptyWord } = useIsEmpty();
   const [noDef, setNoDef] = useState(false);
   const [userInput, setUserInput] = useState("");
-  const { word, otherWords } = useFetch(userInput, setNoDef);
+  const { word, otherWords } = useFetch(userInput, setUserInput, setNoDef);
   const [font, setFont] = useState({
     typeface: "",
     font: "",
@@ -29,7 +29,6 @@ const App = (props: {}) => {
   };
 
   function fontCallback(font: FontInterface): void {
-    // console.log("FROM fontCallback: ", font);
     setFont(font);
   }
 
