@@ -38,16 +38,5 @@ export const ErrorPage = (props: {
     </React.Fragment>
   );
 };
-
-// const StyledUL = styled.ul`
-//   display: grid;
-
-//   grid-template-columns: auto auto auto;
-
-//   grid-row-gap: 1.75rem;
-
-//   list-style-type: none;
-// `;
-
 const errorMSG =
   "Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.";
