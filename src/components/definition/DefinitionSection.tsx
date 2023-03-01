@@ -18,11 +18,11 @@ import {
   StyledListItem,
 } from "./DefinitionSectionStyles";
 
-const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
+const DefinitionSection = (props: { wordArray: Array<WordInterface> }) => {
   const DefinitionList =
-    props.wordObj.length > 0
-      ? props.wordObj.map((word, index) => {
-          const definitionList = props.wordObj[index].definition.map(
+    props.wordArray.length > 0
+      ? props.wordArray.map((word, index) => {
+          const definitionList = props.wordArray[index].definition.map(
             (definition, index) => (
               <StyledListItem key={index * 3.14}>
                 <p
@@ -56,11 +56,11 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
       <ListTile>
         <ListTileContentContainer>
           <ListTileTitle>
-            {props.wordObj.length > 0 && props.wordObj[0]["word"]}
+            {props.wordArray.length > 0 && props.wordArray[0]["word"]}
           </ListTileTitle>
           <ListTileBottom style={{ color: AppTheme.otherColors.purpleColor }}>
-            {props.wordObj[0] && props.wordObj[0]["pronunciation"]
-              ? `/${props.wordObj[0]["pronunciation"]}/`
+            {props.wordArray[0] && props.wordArray[0]["pronunciation"]
+              ? `/${props.wordArray[0]["pronunciation"]}/`
               : ""}
           </ListTileBottom>
         </ListTileContentContainer>
@@ -68,9 +68,7 @@ const DefinitionSection = (props: { wordObj: Array<WordInterface> }) => {
         <PlayButton
           src={images.play}
           onClick={() => {
-            const audio = new Audio(
-              "https://media.merriam-webster.com/audio/prons/en/us/mp3/f/free0001.mp3"
-            );
+            const audio = new Audio(props.wordArray[0].audio);
             audio.play();
           }}
         />
