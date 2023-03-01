@@ -12,9 +12,14 @@ const initWord: WordInterface = {
   pronunciation: "",
   partOfSpeach: "",
   definition: [""],
+  audio: "",
 };
 
-const useFetch = (userInput: string, setError: Function) => {
+const useFetch = (
+  userInput: string,
+  setUserInput: Function,
+  setError: Function
+) => {
   const [word, setWord] = useState([initWord]);
   const [otherWords, setOtherWords] = useState([]);
 
@@ -39,6 +44,8 @@ const useFetch = (userInput: string, setError: Function) => {
     if (data.data === undefined) {
       console.log("undefined FOUND!");
       setError(true);
+      setOtherWords([]);
+
       return;
     }
     if (Array.isArray(data.data) === true) {
@@ -54,8 +61,6 @@ const useFetch = (userInput: string, setError: Function) => {
       const returnedWord = data.data[i]["hwi"]["hw"].replaceAll("*", "");
 
       if (searchedWord === returnedWord) {
-        // TODO: REMOVE DUPLICATE
-
         const wordObject = wordModel({
           word: userInput.toLowerCase(),
           pronunciation:
@@ -63,6 +68,7 @@ const useFetch = (userInput: string, setError: Function) => {
             data.data[i]["hwi"]["prs"][0]["mw"],
           partOfSpeach: data.data[i]["fl"],
           definition: data.data[i]["shortdef"],
+          audio: "",
         });
 
         wordDefinitions!.push(wordObject);
@@ -75,22 +81,13 @@ const useFetch = (userInput: string, setError: Function) => {
         const stemsArray = data.data[i]["meta"]["stems"];
         console.log("Stems: ", stemsArray.includes(searchedWord));
         if (stemsArray.includes(searchedWord)) {
-          // TODO: REMOVE DUPLICATE
-          const wordObject = wordModel({
-            word: stemsArray[0],
-            pronunciation:
-              data.data[i]["hwi"].hasOwnProperty("prs") &&
-              data.data[i]["hwi"]["prs"][0]["mw"],
-            partOfSpeach: data.data[i]["fl"],
-            definition: data.data[i]["shortdef"],
-          });
-
-          wordDefinitions!.push(wordObject);
+          setUserInput(stemsArray[0]);
         }
       }
     }
     if (wordDefinitions.length === 0) {
       setError(true);
+      setOtherWords([]);
       return;
     }
     setWord(wordDefinitions);
