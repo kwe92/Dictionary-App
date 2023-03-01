@@ -69,6 +69,14 @@ const AppGlobalTheme = createGlobalStyle<{
     li {
         line-style: none;
     }
+
+    #other-words-list-item {
+      box-shadow: 0 0 1rem
+  ${(props) =>
+    props.lightMode
+      ? props.theme.lightColors.shade1
+      : props.theme.darkColors.shade1};
+    }
     
 `;
 

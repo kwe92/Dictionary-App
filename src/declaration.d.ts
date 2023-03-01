@@ -33,6 +33,7 @@ interface WordInterface {
     pronunciation?: string,
     partOfSpeach: string,
     definition: string[],
+    audio: string
   }
 
   interface FontInterface{
