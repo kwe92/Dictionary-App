@@ -6,5 +6,6 @@ export const wordModel = (props: WordInterface): WordInterface => {
     pronunciation: props.pronunciation,
     partOfSpeach: props.partOfSpeach,
     definition: props.definition,
+    audio: props.audio,
   };
 };
