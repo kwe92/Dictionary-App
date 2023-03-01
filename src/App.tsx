@@ -70,5 +70,5 @@ const DefinitionSectionEle = (props: { word: WordInterface[] }) => {
   if (props.word[0].word === "") {
     return <></>;
   }
-  return <DefinitionSection wordObj={props.word} />;
+  return <DefinitionSection wordArray={props.word} />;
 };
