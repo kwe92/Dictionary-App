@@ -54,13 +54,14 @@ const AppBar = (props: Props) => {
           />
         </FontDropDownContainer>
 
-        <VerticalLine />
+        <VerticalLine id="vertical-line" />
 
         {/* Switch */}
         <Switch onClick={handleMode} />
 
         {/* Icon Moon */}
         <IconMoon />
+        <IconSun />
       </RightContentContainer>
     </AppBarContainer>
   );
@@ -115,6 +116,7 @@ const IconMoon = (props: {}) => (
     width="22"
     height="22"
     viewBox="0 0 22 22"
+    id="icon-moon"
   >
     <path
       fill="none"
@@ -125,6 +127,10 @@ const IconMoon = (props: {}) => (
       d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"
     />
   </svg>
+);
+
+const IconSun = (props: {}) => (
+  <img id="icon-sun" src={images.sun} style={{ width: "2.375rem" }}></img>
 );
 
 export default AppBar;
