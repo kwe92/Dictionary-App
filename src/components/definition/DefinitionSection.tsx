@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { images } from "../../constants/images";
 import AppTheme from "../../styles/theme/AppTheme";
+import { AnimatePresence } from "framer-motion";
 
 import {
   DefinitionListTile,
@@ -52,30 +53,41 @@ const DefinitionSection = (props: { wordArray: Array<WordInterface> }) => {
       : null;
 
   return (
-    <MainContainer>
-      <ListTile>
-        <ListTileContentContainer>
-          <ListTileTitle>
-            {props.wordArray.length > 0 && props.wordArray[0]["word"]}
-          </ListTileTitle>
-          <ListTileBottom style={{ color: AppTheme.otherColors.purpleColor }}>
-            {props.wordArray[0] && props.wordArray[0]["pronunciation"]
-              ? `/${props.wordArray[0]["pronunciation"]}/`
-              : ""}
-          </ListTileBottom>
-        </ListTileContentContainer>
+    <AnimatePresence>
+      <MainContainer>
+        <ListTile
+          transition={transition}
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          key="ListTile"
+        >
+          <ListTileContentContainer>
+            <ListTileTitle>
+              {props.wordArray.length > 0 && props.wordArray[0]["word"]}
+            </ListTileTitle>
+            <ListTileBottom style={{ color: AppTheme.otherColors.purpleColor }}>
+              {props.wordArray[0] && props.wordArray[0]["pronunciation"]
+                ? `/${props.wordArray[0]["pronunciation"]}/`
+                : ""}
+            </ListTileBottom>
+          </ListTileContentContainer>
 
-        <PlayButton
-          src={images.play}
-          onClick={() => {
-            const audio = new Audio(props.wordArray[0].audio);
-            audio.play();
-          }}
-        />
-      </ListTile>
-      {DefinitionList}
-    </MainContainer>
+          <PlayButton
+            src={images.play}
+            onClick={() => {
+              const audio = new Audio(props.wordArray[0].audio);
+              audio.play();
+            }}
+          />
+        </ListTile>
+        {DefinitionList}
+      </MainContainer>
+    </AnimatePresence>
   );
 };
+
+const transition = { ease: "easeIn", duration: 3 };
+// const viewBehavior = { opacity: [0, 1] };
 
 export default DefinitionSection;
