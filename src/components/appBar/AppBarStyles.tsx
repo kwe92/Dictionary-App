@@ -75,8 +75,6 @@ const FontDropDownContainer = styled(Row)`
 const VerticalLine = styled.div`
   width: 0.0625rem;
   height: 2rem;
-  background: ${({ theme }: { theme: ThemeInterface }) =>
-    theme.lightColors.shade1};
 
   @media screen and (max-width: 450px) {
     margin: 0 0.375rem;
