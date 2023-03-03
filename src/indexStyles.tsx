@@ -38,7 +38,7 @@ const AppGlobalTheme = createGlobalStyle<{
 
         }
 
-        #search-bar{
+        #search-bar {
             background: ${(props) =>
               props.lightMode
                 ? props.theme.lightColors.shade2
@@ -77,6 +77,32 @@ const AppGlobalTheme = createGlobalStyle<{
       ? props.theme.lightColors.shade1
       : props.theme.darkColors.shade1};
     }
+
+    #other-words-list-item: hover{
+      box-shadow: 0 0 1rem
+  ${(props) =>
+    props.lightMode
+      ? props.theme.otherColors.purpleColor
+      : props.theme.otherColors.purpleColor};
+    }
+
+    #vertical-line {
+      background: ${(props) =>
+        props.lightMode
+          ? props.theme.lightColors.shade1
+          : props.theme.lightColors.shade0};
+    }
+
+    #icon-sun {
+      display: ${(props) => (props.lightMode ? "block" : "none")};
+    }
+
+    #icon-moon {
+      display: ${(props) => (!props.lightMode ? "block" : "none")};
+    }
+
+    }
+    
     
 `;
 

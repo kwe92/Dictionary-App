@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { wordModel } from "../../models/WordModel";
 
-// TODO: Get the plural of a word and return the word definition | Done Maybe
-// TODO: Add Audio file
-// TODO: Add a fileName property to the word interface?
 // Example: https://media.merriam-webster.com/audio/prons/en/us/mp3/f/free0001.mp3
 // https://media.merriam-webster.com/audio/prons/en/us/mp3/{first_letter_of_filename}/{file_name}.mp3
 const initWord: WordInterface = {

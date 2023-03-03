@@ -7,6 +7,8 @@ import play from "../../assets/images/icon-play.svg";
 import search from "../../assets/images/icon-search.svg";
 import logo from "../../assets/images/logo.svg";
 import sadFace from "../../assets/images/sadface_nbg.png";
+import sun from "../../assets/images/sun.jpeg";
+
 export default {
   arrowDown,
   moon,
@@ -15,4 +17,5 @@ export default {
   search,
   logo,
   sadFace,
+  sun,
 };

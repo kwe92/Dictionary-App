@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Column, Row } from "../../styles/layout/Flex";
 
@@ -11,7 +12,12 @@ const MainContainer = styled(Column)`
   }
 `;
 
-const ListTile = styled(Row)`
+// const ListTile = styled(Row)`
+//   justify-content: space-between;
+// `;
+
+const ListTile = styled(motion.div)`
+  display: flex;
   justify-content: space-between;
 `;
 
