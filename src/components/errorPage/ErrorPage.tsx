@@ -3,7 +3,7 @@ import { images } from "../../constants/images";
 import {
   ErrorBody,
   ErrorTittle,
-  IconSadFace,
+  IconGuide,
   MainContainer,
   StyledLI,
   StyledUL,
@@ -30,7 +30,7 @@ export const ErrorPage = (props: {
   return (
     <React.Fragment>
       <MainContainer>
-        <IconSadFace src={images.sadFace} alt="sadface.png" />
+        <IconGuide id="icon-guide" src={images.guide} alt="guide.png" />
         <ErrorTittle>{`No Definitions Found For: ${props.unknownWord}`}</ErrorTittle>
         <ErrorBody>{errorMSG}</ErrorBody>
       </MainContainer>
