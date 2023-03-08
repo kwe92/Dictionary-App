@@ -59,6 +59,11 @@ const AppGlobalTheme = createGlobalStyle<{
 
     }
 
+    #icon-guide {
+     
+      filter: ${(props) => !props.lightMode && "invert(100%)"};
+    }
+
     input{
         color: ${(props) =>
           props.lightMode
