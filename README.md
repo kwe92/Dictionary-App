@@ -18,4 +18,9 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 - **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
 
+### Links
+
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [dictionaryapp](https://dictionaryapp-ee894.web.app)
+
 ### Author: Kweayon Clark
