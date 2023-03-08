@@ -16,7 +16,7 @@ const MainContainer = styled(Column)`
   }
 `;
 
-const IconSadFace = styled.img`
+const IconGuide = styled.img`
   height: 10rem;
   width: 10rem;
 `;
@@ -79,11 +79,4 @@ const StyledUL = styled.ul`
 
 // const IconImageContainer = styled.div``;
 
-export {
-  MainContainer,
-  IconSadFace,
-  ErrorBody,
-  ErrorTittle,
-  StyledLI,
-  StyledUL,
-};
+export { MainContainer, IconGuide, ErrorBody, ErrorTittle, StyledLI, StyledUL };
