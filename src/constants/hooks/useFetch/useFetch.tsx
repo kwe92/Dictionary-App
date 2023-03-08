@@ -25,6 +25,9 @@ const useFetch = (
   let wordDefinitions: Array<WordInterface> = [];
 
   const fetchWord = async (userInput: string) => {
+    if (!userInput) {
+      setUserInput("keyboard");
+    }
     const data = await axios.get(endpint);
 
     console.log("Data: ", data.data);
@@ -32,12 +35,6 @@ const useFetch = (
     console.log("Data All: ", data.data);
     console.log("Data type: ", typeof data.data);
 
-    if (data.data === "Word is required.") {
-      console.log("Word is required. FOUND!");
-      wordDefinitions = [initWord];
-      setWord(wordDefinitions);
-      return;
-    }
     if (data.data === undefined) {
       console.log("undefined FOUND!");
       setError(true);
@@ -105,3 +102,10 @@ const useFetch = (
 };
 
 export default useFetch;
+
+// if (data.data === "Word is required.") {
+//   console.log("Word is required. FOUND!");
+//   wordDefinitions = [initWord];
+//   setWord(wordDefinitions);
+//   return;
+// }

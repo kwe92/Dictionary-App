@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import AppTheme from "./styles/theme/AppTheme";
 import { AppContainer, AppContainerWrapper, ErrorMessage } from "./AppStyles";
