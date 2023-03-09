@@ -20,7 +20,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [dictionaryapp](https://dictionaryapp-ee894.web.app)
+
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/typescript-styledcomponents-qNw2yYASui)
 
 ### Author: Kweayon Clark

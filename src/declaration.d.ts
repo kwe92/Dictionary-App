@@ -36,7 +36,7 @@ interface WordInterface {
     audio: string
   }
 
-  interface FontInterface{
+  interface FontInterface {
     typeface: string,
     font: string
   }

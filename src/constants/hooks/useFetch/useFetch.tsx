@@ -50,10 +50,10 @@ const useFetch = (
         return;
       }
     }
+    // Dynamically && instantiate objects
     for (let i = 0; i < data.data.length; i++) {
       const searchedWord = userInput.replaceAll(" ", "").toLocaleLowerCase();
       const returnedWord = data.data[i]["hwi"]["hw"].replaceAll("*", "");
-
       if (searchedWord === returnedWord) {
         const wordObject = wordModel({
           word: userInput.toLowerCase(),
@@ -63,9 +63,11 @@ const useFetch = (
           partOfSpeach: data.data[i]["fl"],
           definition: data.data[i]["shortdef"],
           audio: data.data[i]["hwi"].hasOwnProperty("prs")
-            ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${
-                data.data[i]["hwi"]["prs"][0]["sound"]["audio"].split("")[0]
-              }/${data.data[i]["hwi"]["prs"][0]["sound"]["audio"]}.mp3`
+            ? data.data[i]["hwi"]["prs"][0]["sound"]
+              ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${
+                  data.data[i]["hwi"]["prs"][0]["sound"]["audio"].split("")[0]
+                }/${data.data[i]["hwi"]["prs"][0]["sound"]["audio"]}.mp3`
+              : ""
             : "",
         });
 
